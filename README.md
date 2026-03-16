@@ -1,20 +1,41 @@
-Запускать от имени администратора.
+# ShadowConnect – RDS User Session Manager
+ShadowConnect позволяет управлять сеансами пользователей на сервере Windows Remote Desktop (RDS):
 
-Должно быть разрешено подключаться без запроса пользователя политикой или в реестре:
+- Просмотр всех текущих сеансов (активных и неактивных, кроме системных и консоли).
+- Теневой доступ к сессии:
+  - Только просмотр
+  - Просмотр и управление
+  - Перевод сессии на консоль (даёт возможность подключиться к отключенному пользователю)
+- Отправка сообщений пользователям или всем сразу.
+- Отключение или принудительное завершение сеанса.
+- Проверка и настройка политики Shadow (теневой доступ с запросом пользователя или без него).
 
-*Политика*
+## Требования
+- Windows Server с ролью Remote Desktop Services
+- Запуск скрипта **от имени администратора**
+- Для перевода на консоль: PsExec.exe и PsExec64.exe должны находиться в папке скрипта
+- Настройки Shadow должны быть разрешены в реестре или через политику:
+  - `HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\Shadow`
+  - Значения:
+    - `0` – отключено
+    - `1` – с запросом пользователя
+    - `2` – без запроса
 
-Computer Configuration
- └ Policies
-   └ Administrative Templates
-     └ Windows Components
-       └ Remote Desktop Services
-         └ Remote Desktop Session Host
-           └ Connections
+## Запуск скрипта
 
-
-*В реестре*
-
-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services
-
-Shadow REG_DWORD 0x2
+# Стандартный интерактивный запуск
+```powershell
+.\ShadowMenu.ps1
+```
+# Включить Shadow без запроса пользователя
+```powershell
+.\ShadowMenu.ps1 -SetNoAnswer
+```
+# Включить Shadow с запросом пользователя
+```powershell
+.\ShadowMenu.ps1 -SetNeedAnswer
+```
+# Полное отключение Shadow
+```powershell
+.\ShadowMenu.ps1 -Disable
+```
