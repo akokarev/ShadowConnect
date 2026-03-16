@@ -15,11 +15,11 @@ ShadowConnect позволяет управлять сеансами польз�
 - Запуск скрипта **от имени администратора**
 - Для перевода на консоль: PsExec.exe и PsExec64.exe должны находиться в папке скрипта
 - Настройки Shadow должны быть разрешены в реестре или через политику:
-  - `HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\Shadow`
+  - `HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\Shadow` (DWord)
   - Значения:
-    - `0` – отключено
-    - `1` – с запросом пользователя
-    - `2` – без запроса
+    - `0x00` – отключено
+    - `0x01` – с запросом пользователя
+    - `0x02` – без запроса
 
 ## Запуск скрипта
 
