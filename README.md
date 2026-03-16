@@ -23,19 +23,19 @@ ShadowConnect позволяет управлять сеансами польз�
 
 ## Запуск скрипта
 
-# Стандартный интерактивный запуск
+#### Стандартный интерактивный запуск
 ```powershell
 .\ShadowMenu.ps1
 ```
-# Включить Shadow без запроса пользователя
+#### Включить Shadow без запроса пользователя
 ```powershell
 .\ShadowMenu.ps1 -SetNoAnswer
 ```
-# Включить Shadow с запросом пользователя
+#### Включить Shadow с запросом пользователя
 ```powershell
 .\ShadowMenu.ps1 -SetNeedAnswer
 ```
-# Полное отключение Shadow
+#### Полное отключение Shadow
 ```powershell
 .\ShadowMenu.ps1 -Disable
 ```
