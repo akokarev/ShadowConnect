@@ -39,3 +39,12 @@ ShadowConnect позволяет управлять сеансами польз�
 ```powershell
 .\ShadowMenu.ps1 -Disable
 ```
+
+## Возможные проблемы
+#### Кодировка
+Файл скрипта должен быть сохранен в кодировке UTF-8 with BOM
+#### Не удается загрузить файл ShadowConnect\ShadowMenu.ps1. Файл ShadowConnect\ShadowMenu.ps1 не имеет цифровой подписи. Невозможно выполнить сценарий в указанной системе. CategoryInfo : Ошибка безопасности: (:) [], PSSecurityException FullyQualifiedErrorId : UnauthorizedAccess
+Проблема в политике запуска неподписанных скриптов. Разрешим запуск для одной сессии консоли
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+```
